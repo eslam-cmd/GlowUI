@@ -222,17 +222,7 @@ const fadeInLeft = {
   },
 } as any;
 
-const fadeInRight = {
-  hidden: { opacity: 0, x: 80 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.7,
-      ease: "easeOut",
-    },
-  },
-} as any;
+// تم حذف fadeInRight لأنه غير مستخدم
 
 const scaleUp = {
   hidden: { opacity: 0, scale: 0.8 },
