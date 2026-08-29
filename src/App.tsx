@@ -198,12 +198,16 @@ const themes: Record<string, ThemeColor> = {
 };
 
 // --- Animation Variants ---
+// --- Animation Variants ---
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: {
+      duration: 0.7,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
   },
 };
 
@@ -212,7 +216,10 @@ const fadeInLeft = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: {
+      duration: 0.7,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
   },
 };
 
@@ -221,7 +228,10 @@ const fadeInRight = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: {
+      duration: 0.7,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
   },
 };
 
@@ -230,7 +240,10 @@ const scaleUp = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
   },
 };
 
@@ -250,8 +263,8 @@ const floatingAnimation = {
   transition: {
     duration: 3,
     repeat: Infinity,
-    repeatType: "loop",
-    ease: "easeInOut",
+    repeatType: "loop" as const,
+    ease: "easeInOut" as const,
   },
 };
 
@@ -260,11 +273,10 @@ const pulseGlow = {
   transition: {
     duration: 2,
     repeat: Infinity,
-    repeatType: "loop",
-    ease: "easeInOut",
+    repeatType: "loop" as const,
+    ease: "easeInOut" as const,
   },
 };
-
 export default function App() {
   // --- States ---
   const [scrolled, setScrolled] = useState(false);
