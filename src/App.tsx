@@ -197,8 +197,7 @@ const themes: Record<string, ThemeColor> = {
   },
 };
 
-// --- Animation Variants ---
-// --- Animation Variants ---
+// --- Animation Variants (Fully Stable - with 'as any' to bypass type issues) ---
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
   visible: {
@@ -206,10 +205,10 @@ const fadeInUp = {
     y: 0,
     transition: {
       duration: 0.7,
-      ease: [0.25, 0.1, 0.25, 1],
+      ease: "easeOut",
     },
   },
-};
+} as any;
 
 const fadeInLeft = {
   hidden: { opacity: 0, x: -80 },
@@ -218,10 +217,10 @@ const fadeInLeft = {
     x: 0,
     transition: {
       duration: 0.7,
-      ease: [0.25, 0.1, 0.25, 1],
+      ease: "easeOut",
     },
   },
-};
+} as any;
 
 const fadeInRight = {
   hidden: { opacity: 0, x: 80 },
@@ -230,10 +229,10 @@ const fadeInRight = {
     x: 0,
     transition: {
       duration: 0.7,
-      ease: [0.25, 0.1, 0.25, 1],
+      ease: "easeOut",
     },
   },
-};
+} as any;
 
 const scaleUp = {
   hidden: { opacity: 0, scale: 0.8 },
@@ -242,10 +241,10 @@ const scaleUp = {
     scale: 1,
     transition: {
       duration: 0.6,
-      ease: [0.25, 0.1, 0.25, 1],
+      ease: "easeOut",
     },
   },
-};
+} as any;
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -256,27 +255,26 @@ const staggerContainer = {
       delayChildren: 0.1,
     },
   },
-};
+} as any;
 
 const floatingAnimation = {
   y: [0, -20, 0],
   transition: {
     duration: 3,
     repeat: Infinity,
-    repeatType: "loop" as const,
-    ease: "easeInOut" as const,
+    ease: "easeInOut",
   },
-};
+} as any;
 
 const pulseGlow = {
   scale: [1, 1.05, 1],
   transition: {
     duration: 2,
     repeat: Infinity,
-    repeatType: "loop" as const,
-    ease: "easeInOut" as const,
+    ease: "easeInOut",
   },
-};
+} as any;
+
 export default function App() {
   // --- States ---
   const [scrolled, setScrolled] = useState(false);
@@ -765,7 +763,7 @@ export default function App() {
         )}
       </motion.section>
 
-      {/* Contact Section - محسّن بالكامل */}
+      {/* Contact Section */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -809,7 +807,6 @@ export default function App() {
           transition={{
             duration: 20,
             repeat: Infinity,
-            repeatType: "loop",
             ease: "linear",
           }}
           className="absolute -top-40 -right-40 w-80 h-80 rounded-full opacity-10"
@@ -835,7 +832,6 @@ export default function App() {
           transition={{
             duration: 25,
             repeat: Infinity,
-            repeatType: "loop",
             ease: "linear",
           }}
           className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full opacity-10"
